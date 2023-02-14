@@ -13,7 +13,7 @@
         <h1>Dolgozók</h1>
 
           <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
             Dolgozó hozzáadása
         </button>
 
@@ -37,7 +37,7 @@
     
   
   <!--Modal--> 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -72,6 +72,53 @@
       </div>
     </div>
   </div>
+
+
+
+  
+  <!--Modify Modal--> 
+  <div class="modal fade" id="modifyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Dolgozó módosítása</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        
+
+
+            
+          <div class="addForm">
+
+            <div class="mt-3">
+                <input id="modifyId" type="text" readonly>
+            </div>
+            <div class="mt-3">
+              <input id="modifyName" class="form-control" type="text" placeholder="Név">
+          </div>
+            <div class="mt-3">
+                <input id="modifyCity" class="form-control" type="text" placeholder="Település">
+            </div>
+            <div class="mt-3">
+                <input id="modifySalary" class="form-control" type="text" placeholder="Fizetés">
+            </div>
+            <!-- <button id="addButton" class="btn btn-success col mt-3">Hozzáad</button> -->
+        </div>
+
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezárás</button>
+          <button type="button" class="btn btn-primary" id="addButton" data-bs-dismiss="modal">Mentés</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   <script src="app.js"></script>
   <script src="js/bootstrap.js"></script>
