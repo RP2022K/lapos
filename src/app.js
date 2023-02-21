@@ -6,6 +6,7 @@ const cityElem = document.querySelector("#city");
 const salaryElem = document.querySelector("#salary");
 
 const addButton = document.querySelector("#addButton");
+const saveButton = document.querySelector('#saveButton');
 
 const modifyIdInput = document.querySelector("#modifyId");
 const modifyNameInput = document.querySelector("#modifyName");
@@ -22,14 +23,18 @@ const dolgozoLista = [
     {id: 7, name: "Panni", city: "Tata", salary: 600},
 ];
 
-function loadEmployee(){
+function loadEmployees(){
     dolgozoLista.forEach((dolgozo) => {
 
         let tr = document.createElement('tr');
+        let tdId = document.createElement('td');
         let tdName = document.createElement('td');
         let tdCity = document.createElement('td');
         let tdSalary = document.createElement('td');
         
+        tdId.textContent = dolgozo.id;
+        dolgozoTorzs.append(tr);
+        tr.append(tdId);
     
         tdName.textContent = dolgozo.name;
         dolgozoTorzs.append(tr);
@@ -48,7 +53,7 @@ function loadEmployee(){
     });
 };
 
-loadEmployee();
+loadEmployees();
 
 function generateDeleteButton(id){
     let tdDel = document.createElement('td');
@@ -70,7 +75,7 @@ function handleDeleteEvent(button, id){
         })
         dolgozoLista.splice(delIndex, 1);
         dolgozoTorzs.textContent = '';
-        loadEmployee();
+        loadEmployees();
     });
 }
 
@@ -88,7 +93,6 @@ function generateModifyButton(dolgozo){
 
 function handleModifyEvent(button, dolgozo){
     button.addEventListener('click', () => {
-        console.log(dolgozo.id);
         modifyIdInput.value = dolgozo.id;
         modifyNameInput.value = dolgozo.name;
         modifyCityInput.value = dolgozo.city;
@@ -98,6 +102,24 @@ function handleModifyEvent(button, dolgozo){
 
 addButton.addEventListener('click', () =>{
     addEmployee();
+});
+saveButton.addEventListener('click', () =>{
+    console.log("mentés árnyékeljárás");
+    let id = modifyIdInput.value;
+    let name = modifyNameInput.value;
+    let city = modifyCityInput.value;
+    let salary = modifySalaryInput.value;
+
+    dolgozoLista.forEach((dolgozo)=>{
+        if (dolgozo.id == id){
+            console.log(dolgozo.name);
+            dolgozo.name = name;
+            dolgozo.city = city;
+            dolgozo.salary = salary;
+        }
+    })
+    dolgozoTorzs.textContent = '';
+    loadEmployees();
 });
 
 function addEmployee(){
@@ -109,7 +131,7 @@ function addEmployee(){
     dolgozoLista.push(dolgozo);
     clearFields();
     dolgozoTorzs.textContent = '';
-    loadEmployee();
+    loadEmployees();
 }
 
 function clearFields(){
